@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage{braket}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{tgpagella}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{lindenmayersystems}
+\usepackage[usestackEOL]{stackengine}
+\newtheorem{theorem}{Theorem}[section]
+\usepackage{appendix}
+\usepackage{biblatex}
+% \addbibresource{biblio.bib}
+\usepackage{imakeidx}
+\usetikzlibrary{calc}
+
+
+
+\newcommand*{\boxcolor}{RubineRed}
+\makeatletter
+\renewcommand{\boxed}[1]{\textcolor{\boxcolor}{%
+\tikz[baseline={([yshift=-1ex]current bounding box.center)}] \node [rectangle, minimum width=1ex,rounded corners,draw] {\normalcolor\m@th$\displaystyle#1$};}}
+ \makeatother
+
+
+\usepackage{todonotes}
+ \newcommand{\todonew}[2][]{\todo[linecolor=green!70!white, backgroundcolor=SpringGreen,
+ bordercolor=green!70!white, textcolor=violet]{#2}}
+ \newcommand{\tododo}[2][]{\todo[linecolor=green!70!white, backgroundcolor=blue!20!white,
+ bordercolor=green!70!white, textcolor=violet]{#2}}
+ \newcommand{\todoquestions}[2][]{\todo[linecolor=green!70!white, backgroundcolor=orange!20!white,
+ bordercolor=green!70!white, textcolor=violet]{#2}}
+
+
+\usepackage[normalem]{ulem}
+
+
+\linespread{1.2}
+
+    \usepackage{geometry}
+    \geometry{
+     a4paper,
+     left=25mm,
+     right=25mm,
+     top=25mm,
+     bottom=30mm,
+     }
+
+\title{Thesis Notes}
+\author{Monica Conte}
+\date{March 2023}
+
+\begin{document}
+
+% \newgeometry{a4paper,
+%      left=25mm,
+%      right=25mm,
+%      top=2mm,
+%      bottom=30mm,}
+% \vspace{-20mm}
+
+% \centerline{\LARGE \bf QMC}
+% \vspace{0.3cm}
+% \centerline{Monica Conte}
+% \vspace{0.3cm}
+% \centerline{March 2023}
+
+\maketitle
+
+% \newgeometry{left=30mm, right=30mm}
+\renewcommand{\abstractname}{}
+\begin{abstract}
+    In this document I review the theory on \textit{Coupled Local Supervised Learning} (CLSL) as explained in \cite{} and applied in \cite{}.
+\end{abstract}
+
+\tableofcontents
+
+
+\newpage
+
+\section{Intro}
+
+
+Machine Learning
+
+
+\end{document}

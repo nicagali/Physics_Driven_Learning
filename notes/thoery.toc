@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {1}Intro}{2}{}%
+\contentsline {section}{\numberline {2}ANN framework}{3}{}%
+\contentsline {section}{\numberline {3}CLSL framework}{5}{}%
+\contentsline {subsection}{\numberline {3.1}General formulation of the method}{5}{}%
+\contentsline {subsection}{\numberline {3.2}Application to Electrical Netwroks}{6}{}%
+\contentsline {subsection}{\numberline {3.3}Comparison with standard methods}{7}{}%
