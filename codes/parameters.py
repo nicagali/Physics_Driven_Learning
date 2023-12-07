@@ -18,7 +18,7 @@ source_voltages = [5, 1, 0]
 desired_output = [4]
 
 initial_value_resistances = 50
-eta_r = 1
+eta_r = 0.5
 alpha_r = 5e3
 gamma_r = alpha_r/eta_r
 delta_R = 0.781

@@ -128,9 +128,7 @@ def update_resistances(G_free, G_clamped, rule, noise=False):
 
             delta_v = diff_clamped-diff_free
             delta_v_sq = diff_clamped**2 - diff_free**2
-
-            # if abs(delta_v_sq) < tol:
-            #     print('smaller', delta_v_sq)
+            
             sample = 0
             if noise:
 
@@ -152,8 +150,6 @@ def update_resistances(G_free, G_clamped, rule, noise=False):
                 prefac = gamma_r * (1 / (G_free.edges[edge]['resistance'])**2)
 
                 delta_R_cont = prefac * (delta_v_sq)
-
-                print(delta_R_cont)
 
                 G_free.edges[edge]['resistance'] += delta_R_cont
 
@@ -182,25 +178,15 @@ def update_conductances(G_free, G_clamped, rule):
         if rule == 'discrete':
                 if delta_v>tol:
 
-                    print('ello', edge, delta_g)
-                    print(G_free.edges[edge]['conductance'])
-
                     G_free.edges[edge]['conductance'] -= delta_g
 
-                    print(G_free.edges[edge]['conductance'])
-
-
                 if delta_v<-tol:
-
-                    print('ello2', edge)
 
                     G_free.edges[edge]['conductance'] += delta_g
         else:
             prefac = gamma_c
 
             delta_g_cont = prefac * (-1) * (delta_v_sq)
-
-            print(delta_g_cont)
 
             G_free.edges[edge]['conductance'] += delta_g_cont
 
@@ -223,8 +209,6 @@ def update_conductances_new(G, state):
             prefac *= (-1)
 
         delta_g_cont = prefac * (diff_sq)
-
-        print(delta_g_cont)
 
         G.edges[edge]['conductance'] += delta_g_cont
 
@@ -311,6 +295,7 @@ def training_epoch(G, rule, update, mse=False, resistances_change=False,
             if new_rule:
 
                 G = train_new_rule(G, update)
+
             else:
 
                 G, voltages_simple = train(G, rule, update)

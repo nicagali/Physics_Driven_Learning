@@ -83,17 +83,21 @@ def plot_resistances(ax, G, rule):
 
     # print(np.shape(resistance_data))
 
-    # numb_res_start = len(resistance_data[])
+    # print(len(resistance_data))
 
-    for edge in range(len(resistance_data)):
+    for edge in range(numb_edges):
 
-        res_values = resistance_data[edge]
+        if numb_edges==1:
+            y = resistance_data
+            x = range(len(resistance_data))
+        else:    
+            res_values = resistance_data[edge]
 
-        x = range(len(resistance_data[edge]))
-        y = []
-        for i in range(len(resistance_data[edge])):
-            if res_values[i] != 'removed':
-                y.append(res_values[i])
+            x = range(len(resistance_data[edge]))
+            y = []
+            for i in range(len(resistance_data[edge])):
+                if res_values[i] != 'removed':
+                    y.append(res_values[i])
 
         ax.plot(x, y, lw = 2)
     

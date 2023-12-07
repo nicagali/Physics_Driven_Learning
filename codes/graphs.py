@@ -54,6 +54,39 @@ def simple_graph(save_data=False):
 
     return G
 
+def two_nodes_graph(save_data=False):
+
+    G = nx.Graph()
+    
+    attributes = {"type" : "source", 'color' : color_dots[0]}
+    G.add_node(0, **attributes)
+    
+    attributes = {"type" : "target", 'color' : color_dots[1]}
+    G.add_node(1, **attributes)
+
+    G.nodes[0]['voltage'] = 5
+    
+    G.add_edge(0,1)
+    
+    # Initialize resistances
+    initalize_resistances(G)
+
+    # Initialize conductances
+    initialize_conductances(G)
+
+    # desired_output = 4
+
+    # Save to data folder
+
+    if save_data:
+
+        nx.write_graphml(G, f"{DATA_PATHG}two_nodes_graph.graphml")
+
+    return G
+
+
+
+
 # Construct a general random network. Specify # of nodes "nodes", # of edges "edges"
 # # of source nodes "numb_sources", # of target nodes "numb_targets" and input 
 # voltages on sources "volt_sources"
