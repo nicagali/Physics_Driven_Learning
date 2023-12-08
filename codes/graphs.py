@@ -85,8 +85,6 @@ def two_nodes_graph(save_data=False):
     return G
 
 
-
-
 # Construct a general random network. Specify # of nodes "nodes", # of edges "edges"
 # # of source nodes "numb_sources", # of target nodes "numb_targets" and input 
 # voltages on sources "volt_sources"

@@ -26,14 +26,14 @@ delta_R = 0.781
 tol = 1e-16
 
 initial_value_conductance = 1/50
-eta_c = 1e-3
+eta_c = 0.5
 alpha_c = 5e-4
 gamma_c = alpha_c/eta_c
 delta_g = 0.0005
 
 standard_dev = 0.01
 
-iterations = 100
+iterations = 20
 
 # PLOT PREFERENCES
 

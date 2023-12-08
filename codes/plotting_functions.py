@@ -115,14 +115,22 @@ def plot_conductaces(ax, G):
 
     conductance_data = np.genfromtxt(f"{DATA_PATH}conductances_change.txt", unpack=True)
 
+
     for edge in range(len(conductance_data)):
 
         cond_values = conductance_data[edge]
 
-        x = range(len(conductance_data[edge]))
-        y = cond_values
+        x = [0]
+        x.extend(range(1,len(conductance_data[edge])+1))
+        y = [initial_value_conductance]
+        y.extend(cond_values)
         
-        ax.plot(x, y, lw = 2)
+        if edge==0:
+            ax.plot(x, y, lw = 3, color = 'silver', label=r'$g_1$')
+        else:
+            ax.plot(x, y, lw = 3, color = 'dimgray', label=r'$g_2$')
+
+    ax.legend(fontsize=legend_size)
     
     ax.grid(ls=':')
 
