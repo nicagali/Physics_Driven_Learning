@@ -165,7 +165,9 @@ def update_resistances(G_free, G_clamped, rule, noise=False):
 
 def update_conductances(G_free, G_clamped, rule):
 
-    for edge in G_free.edges():
+    G_out = G_free.copy(as_view=False)
+
+    for edge in G_out.edges():
 
         u, v = edge
 
@@ -178,19 +180,19 @@ def update_conductances(G_free, G_clamped, rule):
         if rule == 'discrete':
                 if delta_v>tol:
 
-                    G_free.edges[edge]['conductance'] -= delta_g
+                    G_out.edges[edge]['conductance'] -= delta_g
 
                 if delta_v<-tol:
 
-                    G_free.edges[edge]['conductance'] += delta_g
+                    G_out.edges[edge]['conductance'] += delta_g
         else:
             prefac = gamma_c
 
             delta_g_cont = prefac * (-1) * (delta_v_sq)
 
-            G_free.edges[edge]['conductance'] += delta_g_cont
+            G_out.edges[edge]['conductance'] += delta_g_cont
 
-    return G_free       #here I update only one graph, the important info is in the edges
+    return G_out       #here I update only one graph, the important info is in the edges
 
 def update_conductances_new(G, state):
 

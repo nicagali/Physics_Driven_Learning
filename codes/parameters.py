@@ -1,9 +1,11 @@
 # PATHS
 
 DATA_PATH = '../../data/'
+DATA_PATH_MEMR = '../../data/memristors'
 PLOT_PATH = '../../plots/'
 DATA_PATHG = '../../data/graphs/'
 PLOT_PATHG = '../../plots/graphs/'
+DATA_IONCHAN_PATH = '../../../Ionic_Channels/data/'
 
 # GRAPH PREFERENCES
 numb_nodes = 9
@@ -11,7 +13,7 @@ numb_edges = 16
 numb_source_nodes = 3
 numb_target_nodes = 3
 numb_hidden_nodes = numb_nodes - numb_target_nodes - numb_source_nodes
-
+s
 # TRAINING PARAMETERS
 source_voltages = [5, 1, 0]
 # desired_output  = [3, 3, 3]
