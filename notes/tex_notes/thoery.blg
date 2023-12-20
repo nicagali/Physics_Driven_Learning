@@ -1,0 +1,15 @@
+[0] Config.pm:307> INFO - This is Biber 2.17
+[0] Config.pm:310> INFO - Logfile is 'thoery.blg'
+[61] biber:340> INFO - === wo dec 20, 2023, 12:18:13
+[69] Biber.pm:418> INFO - Reading 'thoery.bcf'
+[113] Biber.pm:972> INFO - Found 2 citekeys in bib section 0
+[121] Biber.pm:4383> INFO - Processing section 0
+[128] Biber.pm:4574> INFO - Looking for bibtex file 'biblio.bib' for section 0
+[128] bibtex.pm:1713> INFO - LaTeX decoding ...
+[131] bibtex.pm:1518> INFO - Found BibTeX data source 'biblio.bib'
+[162] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[162] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[162] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[162] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
+[166] bbl.pm:654> INFO - Writing 'thoery.bbl' with encoding 'UTF-8'
+[167] bbl.pm:757> INFO - Output to thoery.bbl

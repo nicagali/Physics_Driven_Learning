@@ -1,16 +1,20 @@
 # Fdb version 3
-["biber thoery"] 1698854774 "thoery.bcf" "thoery.bbl" "thoery" 1698855063
-  "thoery.bcf" 1698855063 106540 4d7ee46093e1d7a6cfc15ca0ba262fd6 "xelatex"
+["biber thoery"] 1703071092 "thoery.bcf" "thoery.bbl" "thoery" 1703071094
+  "biblio.bib" 1702902792 908 690f84f7d0e0f89abeece0ca05e0a32e ""
+  "thoery.bcf" 1703071094 106469 ffb9d8b91c97385ebc8a386c79a2cb5f "xelatex"
   (generated)
   "thoery.bbl"
   "thoery.blg"
-["xdvipdfmx"] 1698855063 "thoery.xdv" "thoery.pdf" "thoery" 1698855063
-  "thoery.xdv" 1698855063 26844 7f9e6059ebb1086df6f0852f2669e515 "xelatex"
+["xdvipdfmx"] 1703071094 "thoery.xdv" "thoery.pdf" "thoery" 1703071094
+  "thoery.xdv" 1703071094 31212 ff37c271993b049585c364c3c305f4d0 "xelatex"
   (generated)
   "thoery.pdf"
-["xelatex"] 1698855062 "/home/monicaconte/nica/phd/Projects/Dillavou/general_network/notes/thoery.tex" "thoery.xdv" "thoery" 1698855063
+["xelatex"] 1703071093 "/home/monicaconte/nica/phd/Projects/Dillavou/general_network/notes/tex_notes/thoery.tex" "thoery.xdv" "thoery" 1703071094
+  "../figures_tex/general_graph.pdf" 1697105435 6958 58d91ed6f7090e68c02b585c808d1889 ""
+  "../figures_tex/neural_ntw.pdf" 1698062615 75025 aa415eb2d9e0485fb0a742346a159422 ""
+  "../figures_tex/neuron.png" 1698056506 56632 5909a72a51fbd678f4b6187f655650a4 ""
   "/etc/texmf/web2c/texmf.cnf" 1697810815 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/monicaconte/nica/phd/Projects/Dillavou/general_network/notes/thoery.tex" 1698855062 15563 aa06db19b4a6ac9b2a8616e697f42913 ""
+  "/home/monicaconte/nica/phd/Projects/Dillavou/general_network/notes/tex_notes/thoery.tex" 1703071091 17252 d0b1c7781299b606e47166cf636d88ff ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1246382020 928 2dc8d444221b7a635bb58038579b861a ""
@@ -158,6 +162,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1605910342 4902 efb3d66683a2da2a232f71e3a571a899 ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/usr/share/texmf/fonts/tfm/public/lm/ec-lmr10.tfm" 1254938640 12056 7e13df7fe4cbce21b072ba7c4f4deb6e ""
+  "/usr/share/texmf/fonts/tfm/public/lm/ec-lmtt10.tfm" 1254938640 1372 2ef2c2b492b3c4cd7879fe083abbb061 ""
   "/usr/share/texmf/fonts/tfm/public/lm/lmbsy10.tfm" 1254938640 1300 2df9da0fc09d4a8c772b3dd386a47c6a ""
   "/usr/share/texmf/fonts/tfm/public/lm/lmbsy7.tfm" 1254938640 1304 535e0954c1961c817723e44bc6a9662c ""
   "/usr/share/texmf/fonts/tfm/public/lm/lmex10.tfm" 1254938640 992 ce925c9346c7613270a79afbee98c070 ""
@@ -178,6 +183,7 @@
   "/usr/share/texmf/fonts/tfm/public/lm/rm-lmr6.tfm" 1254938640 11836 e3b6ce3e601aec94f64a536e7f4224d5 ""
   "/usr/share/texmf/fonts/tfm/public/lm/rm-lmr8.tfm" 1254938640 11864 309fd7f43e4a0ba39f6f7644d76e8edf ""
   "/usr/share/texmf/fonts/tfm/public/tex-gyre/ec-qplb.tfm" 1529098226 11296 a408cf30d1e113b9223509d14fd9318d ""
+  "/usr/share/texmf/fonts/tfm/public/tex-gyre/ec-qplr-sc.tfm" 1529098226 13260 46b3444e54978e45ebe41bc6827a1a33 ""
   "/usr/share/texmf/fonts/tfm/public/tex-gyre/ec-qplr.tfm" 1529098226 11948 3a0965ca1f09d015a964e70bc46fe09e ""
   "/usr/share/texmf/fonts/tfm/public/tex-gyre/ec-qplri.tfm" 1529098226 11696 e88a1bd50066333985f161da90c0e528 ""
   "/usr/share/texmf/fonts/tfm/public/tex-gyre/ts1-qplr.tfm" 1529098226 1628 0cde3c8a66f74ab8447166240fdd50f8 ""
@@ -187,19 +193,17 @@
   "/usr/share/texmf/tex/latex/lm/omxlmex.fd" 1256929440 566 a94661f7b66063f191960bb7935b6ba2 ""
   "/usr/share/texmf/tex/latex/lm/ot1lmr.fd" 1256929440 1880 bae7b659316f7344a86218ad38b01d91 ""
   "/usr/share/texmf/tex/latex/lm/t1lmr.fd" 1256929440 1865 afbfccbe7fda9c2dc5078ad7c486bbed ""
+  "/usr/share/texmf/tex/latex/lm/t1lmtt.fd" 1256929440 2681 354015af3b61e7be30009f084986375a ""
   "/usr/share/texmf/tex/latex/tex-gyre/t1qpl.fd" 1480098840 1640 e3069415f0401b1e6e2d69bd4f2f0a7b ""
   "/usr/share/texmf/tex/latex/tex-gyre/tgpagella.sty" 1480098840 2230 fc853fd117e6b73f5d6716214d3abb3c ""
   "/usr/share/texmf/tex/latex/tex-gyre/ts1qpl.fd" 1480098840 1162 2c49e2817a9551ff0c50d454b41d1128 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1698051384 5132913 d66a8a4cbac37671cdd5f07c5613a3b3 ""
-  "figures_tex/general_graph.pdf" 1697105435 6958 58d91ed6f7090e68c02b585c808d1889 ""
-  "figures_tex/neural_ntw.pdf" 1698062615 75025 aa415eb2d9e0485fb0a742346a159422 ""
-  "figures_tex/neuron.png" 1698056506 56632 5909a72a51fbd678f4b6187f655650a4 ""
-  "thoery.aux" 1698855063 2288 6fb00532eb73bdbee18e321c88739ebd "xelatex"
-  "thoery.bbl" 1698854775 0 d41d8cd98f00b204e9800998ecf8427e "biber thoery"
-  "thoery.run.xml" 1698855063 2273 b25996abc1d98d17df2fb51de640a669 "xelatex"
-  "thoery.tex" 1698855062 15563 aa06db19b4a6ac9b2a8616e697f42913 ""
-  "thoery.toc" 1698855063 428 4abbf31b502e502dde91957c65b3ccaa "xelatex"
+  "thoery.aux" 1703071094 2744 b2b22a54d301f3af86c5ae488befeadb "xelatex"
+  "thoery.bbl" 1703071093 4632 c8665ba01de248e5a9fb74e8f952ccfc "biber thoery"
+  "thoery.run.xml" 1703071094 2350 bf788b8700f73212c66b329705db9bd4 "xelatex"
+  "thoery.tex" 1703071091 17252 d0b1c7781299b606e47166cf636d88ff ""
+  "thoery.toc" 1703071094 420 9342ba958dc59ab3ae3f4f9784bf677c "xelatex"
   (generated)
   "thoery.aux"
   "thoery.bcf"

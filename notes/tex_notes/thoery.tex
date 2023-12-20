@@ -19,19 +19,25 @@
 \usepackage[usestackEOL]{stackengine}
 \newtheorem{theorem}{Theorem}[section]
 \usepackage{appendix}
-\usepackage{biblatex}
 \usepackage[capitalise]{cleveref}
-% \addbibresource{biblio.bib}
+\usepackage[sorting=none]{biblatex}
+\addbibresource{biblio.bib}
 \usepackage{imakeidx}
 \usetikzlibrary{calc}
 \usepackage[normalem]{ulem}
 
 
 % BOXES COMMANDS
-    \newcommand*{\boxcolor}{RubineRed}
+    \newcommand*{\boxcolor}{Mulberry}
     \makeatletter
     \renewcommand{\boxed}[1]{\textcolor{\boxcolor}{%
-    \tikz[baseline={([yshift=-1ex]current bounding box.center)}] \node [rectangle, minimum width=1ex,rounded corners,draw] {\normalcolor\m@th$\displaystyle#1$};}}
+    \tikz[baseline={([yshift=-1ex]current bounding box.center)}] \node[rectangle, minimum width=1ex,rounded corners,draw, line width=1.5pt] {\normalcolor\m@th$\displaystyle#1$};}}
+    \makeatother
+
+    \newcommand*{\boxcolorc}{NavyBlue}
+    \makeatletter
+    \newcommand{\boxedc}[1]{\textcolor{\boxcolorc}{%
+    \tikz[baseline={([yshift=-1ex]current bounding box.center)}] \node[rectangle, minimum width=1ex,rounded corners,draw, line width=1.5pt] {\normalcolor\m@th$\displaystyle#1$};}}
     \makeatother
 
 % NOTES COMMANDS
@@ -46,6 +52,9 @@
 % COLORS COMMANDS
 
 \newcommand{\important}[1]{\textcolor{OrangeRed}{\bf{#1}}}
+\newcommand{\res}[1]{\textcolor{Mulberry}{\bf{#1}}}
+\newcommand{\cond}[1]{\textcolor{NavyBlue}{\bf{#1}}}
+
 
 \linespread{1.2}
 
@@ -69,7 +78,7 @@
 
 \renewcommand{\abstractname}{}
 \begin{abstract}
-    In this document I review the theory on \textit{Coupled Local Supervised Learning} (CLSL) as explained in \cite{} and applied in \cite{}. This method constitutes a novel approach in the design of materials.
+    In this document I review the theory on \textit{Coupled Local Supervised Learning} (CLSL) as explained in \cite{Stern} and applied in \cite{Dillavou}. This method constitutes a novel approach in the design of materials that possess the ability of learning.
 
 \end{abstract}
 
@@ -80,12 +89,12 @@
 
 \section{Intro}
 
-As opposed to materials designed with particular sets of functions, CLSL approach allows to create systems that don't possess explicit infomration about the desired functionality but physically adapts to applied forces and develop the ability to perform tasks. This method belongs to a class of strategies based on learning, where systems can adjust or be adjusted microscopically in response to training set to develop desired functionalities. Until recently, such idea was primarily applied in the context of non-physical networks, like artificial neural networks (ANN).
+As opposed to materials designed with particular sets of functions, CLSL approach allows to create systems that don't possess explicit information about the desired functionality but physically adapts to applied external forces and develop the ability to perform tasks. This method belongs to a class of strategies based on learning, where systems can adjust or be adjusted microscopically in response to training set to develop desired functionalities. Until recently, such idea was primarily applied in the context of non-physical networks, like artificial neural networks (ANN).
 
 There are two types of learning. 
 \begin{itemize}
 \item \textbf{Global Learning} involves the minimization of a global function and the subsequent \textit{tuning} of the leaning degrees of freedom. \important{An external intervention at microscopic level is required.} 
-\item In \textbf{Local Lerning} the evolution is \important{autonomous and requires no external designer} for the evaluation of the current state and subsequent modification. This is particularly useful in physical systems since their microscopical elements do not perform computations and do not encode a priori infomration about the desired functionality. 
+\item In \textbf{Local Lerning} the evolution is \important{autonomous and requires no external designer} for the evaluation of the current state and subsequent modification. This is particularly useful in physical systems, since their microscopical elements do not perform computations and do not encode a priori information on the desired functionality. 
 \end{itemize}
 
 CLSL implements local learning on physical netwroks with the aim of training it to achieve desired responses on \textit{target nodes} as a response to external constraints applied to \textit{source nodes}. The method is inspired by \textit{contrastive learning} and by the strategy of \textit{equilibrium propagation}. In the paper, it is applied to two types of physical systems, a flow network and an elastic network. Experimental issues are finally taken into consideration and the theory of the method is modified accordingly. 
@@ -97,7 +106,7 @@ CLSL implements local learning on physical netwroks with the aim of training it 
 The building blocks of ANN are \textit{neurons}. They are elements that take inputs and produce outputs by performing some mathematical operations on the inputs. \cref{fig:neuron} shows a neuron with two inputs $x_1$ and $x_2$. The output depends on the inputs, the wieght and the bias. Training a neuron means modifying the wieghts in such a way that it outputs a desired value.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.75\columnwidth]{figures_tex/neuron.png}
+    \includegraphics[width=0.75\columnwidth]{../figures_tex/neuron.png}
 \caption{Two inputs ($x_1$ and $x_2$) neuron. Blue circle contains the operations perfomred in a neuron: \textcolor{red}{\textbf{multiply inputs to wieghts}} associated to the links, \textcolor{LimeGreen}{\textbf{sum inputs and add a bias $b$}}, \textcolor{Dandelion}{\textbf{apply an activating function}}. The outcome is a value belonging to $[0,1]$.}
     \label{fig:neuron}
 \end{figure} 
@@ -106,7 +115,7 @@ The building blocks of ANN are \textit{neurons}. They are elements that take inp
 Given an input, each neuron in each layer performs coputations and gives output that are inputs for the follwoing neuron. This process of proceeding from the inputs to the outputs is called \textbf{feedforward}.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\columnwidth]{figures_tex/neural_ntw.pdf}
+    \includegraphics[width=0.6\columnwidth]{../figures_tex/neural_ntw.pdf}
     \caption{Example of a neural network: a structure made of neurons organized in layers.}
     \label{fig:neural_ntw}
 \end{figure} 
@@ -135,22 +144,22 @@ The training proceeds in steps and in each step the weights are optimized to dec
 
 \section{CLSL framework}
 
-We now consider a physical neural network (PNN). It is, again, a strucutre made of nodes and edges but, as opposed to ANN, they are not organized in layers and in principle there is no fixed patterns. However, just like an ANN, we divide the nodes in \textit{source nodes}, \textit{hidden nodes} and \textit{target nodes}. A generic PNN is shown in \cref{fig:general_graph}. These elements assume values of physical qunatities and can be realized in real life. For example, in electric netwroks, the nodes assume vlaue of potential and the edges of resistances.
+We now consider a physical neural network (PNN). It is, again, a strucutre made of nodes and edges but, as opposed to ANN, they are not organized in layers and in principle there is no fixed pattern. However, just like an ANN, we divide the nodes in \textit{source nodes}, \textit{hidden nodes} and \textit{target nodes}. A generic PNN is shown in \cref{fig:general_graph}. These elements assume values of physical qunatities and can be realized in real life. For example, in electric netwroks, the nodes assume vlaue of potential and the edges of resistances.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\columnwidth]{figures_tex/general_graph.pdf}
+    \includegraphics[width=0.6\columnwidth]{../figures_tex/general_graph.pdf}
     \caption{Example of a generic PNN. $5,6,7$ red dots denote input nodes, $0,1,3$ gray nodes denote hidden nodes and $2,4,8$ purple nodes denote target nodes.}
     \label{fig:general_graph}
 \end{figure} 
 The training goal here is to train the netwrok to give desired outputs in the output nodes given cerain inputs at the source nodes, just like in the ANN.
 
-In a PNN, the values on the nodes are produced by minimizing an \textit{energy function}, as opposed to the feedforward procedure of ANN. For example, in electric networks the function minmized is the power dissipated in the resistances, which corresponds to satisfying Kichoff's law on current in the circuit of nodes and resistances (see Appendix (?)), i.e. conservation of charge. In flow networks, minimization of power means conservation of flow (?).
+In a PNN, the values on the nodes follow from the minimization of an \textit{energy function}, as opposed to the feedforward procedure of ANN. For example, in electric networks, the function minmized is the power dissipated by the resistances. This, in turn, corresponds to satisfying Kichoff's law on current in the circuit of nodes and resistances (see Appendix (?)), i.e. conservation of charge. In flow networks, minimization of power means conservation of flow (?).
 
 \subsection{General formulation of the method}
 
-Let us consdier a network with nodes $\mu$ and indeces $j$. The \textit{physical degrees of freedom} (pof) belong to the set of variables $\{ x_{\mu}\}$. The \textit{learning degrees of freedom} (lof) belong to the set $w_j$ and play the roles of wieghts connecting the nodes. Given an initial condition $x_{\mu}(t=0)$ (part of the $x_{\mu}$ in the set given) and a set of weights, the physical degrees of freedom evolve to a steady state tha minimizes a \textit{physical cost function} $E(x_{\mu};w_j)$. Note that both $\{ x_{\mu} \}$ and $E$ depend on $\{ w_j\}$.
+Let us consdier a network with nodes indicized by $\mu$ and edges indicized by $j$. The \textit{physical degrees of freedom} (pof) belong to the set of variables $\{ x_{\mu}\}$. The \textit{learning degrees of freedom} (lof) belong to the set $w_j$ and play the roles of wieghts connecting the nodes. Given an initial condition $x_{\mu}(t=0)$ (part of the $x_{\mu}$ in the set given) and a set of weights, the physical degrees of freedom evolve to a steady state tha minimizes a \textit{physical cost function} $E(x_{\mu};w_j)$. Note that both $\{ x_{\mu} \}$ and $E$ depend on $\{ w_j\}$.
 
-Inspired by \textit{contrastive Hebbian learning} (CHL) [], one considers two states of the network. A \textit{free state} $x_{\mu}^{F}$ in which the source nodes $x_S$ are constrained while the target $x_T^F$ and hidden $x_H^F$ equilibrate to the steady state. A \textit{clamped state} $x_{\mu}^{C}$ in which the source $x_S$ and the target $x_T^C$ nodes are constrained while only the hidden nodes $x_H^C$ equilibrate to the steady state. In the clampd state, the target nodes are nudged by an \textit{external supervisor} towards the desired $X_T$ values of outputs
+Inspired by \textit{contrastive Hebbian learning} (CHL), one considers two states of the network. The \textit{free state} $x_{\mu}^{F}$ in which the source nodes $x_S$ are constrained while the target $x_T^F$ and hidden $x_H^F$ equilibrate to the steady state. The \textit{clamped state} $x_{\mu}^{C}$ in which the source $x_S$ and the target $x_T^C$ nodes are constrained while only the hidden nodes $x_H^C$ equilibrate to the steady state. In the clampd state, the target nodes are nudged by an \textit{external supervisor} towards the desired $X_T$ values of outputs
 \[
 x_T^{C} = x_{T}^F + \eta \left[ X_T - x_{T}^{F} \right] 
 \] 
@@ -167,30 +176,30 @@ The authors propose the following updating rule for the lof:
 \end{itemize}
 
 % which corresponds to performing a gradient descent on the energy function with respect to the wiehgts. This means that the wieghts are updated towards a local minima of the energy function. 
-The motivation behind this rule comes from the fact that we consdier a \important{physical} network, where generally one can partition the total energy $E$ as a sum over edegs $E = \sum_{j}E_{j}(x_{\mu}(j);w_j)$ of energies $E_j$ that only depend on the pof on the nodes that connect the edge $j$. Therefore, the learning rule is \important{local}. But does this rule effectively trainst the network? The autors actually show (Appendix A in paper) that this updating scheme minimizes an \textit{effective cost function} that is not identical to the standard cost function but shares important features with it. They argue that minimizing the effective function mimics the minimization of a standard cost function. From how well the networks are trained, they observe that this affirmation is plausible. The CLSL approach share many similarities with Equilibrium Propagation(EP) \cite{} and the learning rule has the same form. However, in EP the learning rule minimizes an actual cost function.
+The motivation behind this rule comes from the fact that we consdier a \important{physical} network, where generally one can partition the total energy $E$ as a sum over edegs $E = \sum_{j}E_{j}(x_{\mu}(j);w_j)$ of energies $E_j$ that only depend on the pof on the nodes that connect the edge $j$. Therefore, the learning rule is \important{local}. But does this rule effectively trains the network? The autors show (Appendix A in \cite{Stern}) that this updating scheme minimizes an \textit{effective cost function} that is not identical to the standard cost function but shares important features with it. They argue that minimizing the effective function mimics the minimization of a standard cost function. From how well the networks are trained, they observe that this affirmation is plausible. The CLSL approach share many similarities with Equilibrium Propagation(EP) \cite{} and the learning rule has the same form. However, in EP the learning rule minimizes an actual cost function.
 
-Summarizing, the learning approach involves the minimization of an energy function and the implementation of the proposed updating rule. The former is motivated by physical plausability and the latter by inspiration from EP. A comparison with minimization of an actual cost function is needed. \textcolor{Orchid}{They say EB is a type of contrastive learning.}
+Summarizing, the learning approach involves the minimization of an energy function and the implementation of the proposed updating rule. The former is motivated by physical plausability and the latter by inspiration from EP. \textcolor{Orchid}{A comparison with minimization of an actual cost function is needed. They say EB is a type of contrastive learning.}
 
 \subsection{Application to Electrical Netwroks}
 
-The framework above can be applied in the context of an electrical network, in which nodes are connected by \textit{variable resistors}. When input voltages are applied at the source nodes $V_{S}$, the voltages at the output $V_{O}$ and hidden $V_{H}$ nodes are determined such that the total power dissipated by the resistances $\mathcal{P}$ is minimized
+The framework above can be applied in the context of electrical networks \cite{Dillavou}, in which nodes are connected by \textit{variable resistors}. When input voltages are applied at the source nodes $V_{S}$, the voltages at the output $V_{O}$ and hidden $V_{H}$ nodes are determined such that the total power dissipated by the resistances $\mathcal{P}$ is minimized
 \[
 \mathcal{P}  = \frac{1}{2} \sum_{j} \frac{\Delta V_j^2}{R_j}   
 \]
 where $j$ runs over the resistances $R_j$ and $\Delta V_j$ is the potential difference between the nodes that the resistance links.
 
-We define the two types of states as above. In the free state the source nodes $V^{F}_{S}$ are constrained, while $V^{F}_{H}$ and $V^{F}_{T}$ are determined by minimizing $\mathcal{P}$. In the clamped state, the source nodes $V^{F}_{C}$ are fixed to the source values, the target nodes are clamped 
+We define the two types of states, as above. In the free state the source nodes $V^{F}_{S}$ are constrained, while $V^{F}_{H}$ and $V^{F}_{T}$ are determined by minimizing $\mathcal{P}$. In the clamped state, the source nodes $V^{F}_{C}$ are fixed to the source values, the target nodes are clamped 
 \[
 V^{C}_{T} = V^{F}_{C} + \eta \left( V^{D} - V^{F}_{C} \right)   
 \] 
 towards the desired output voltages $V^D$, while the hidden nodes are left to minimize $\mathcal{P}$. The parameter $0 < \eta \le 1$ quanitifies the importance of the nudge.
 
-The final goal is deriver the desired output $V^{D}$ in the target nodes. To do so, the network gets optimized by updating the values of the resistances following a certain \textit{learning rule}. The adaptation of the learning tule of CLSL in the context of electrical circuit would lead to 
+The final goal is to deliver the desired output $V^{D}$ to the target nodes. To do so, the network gets optimized by updating the values of the resistances following a certain \textit{learning rule}. The adaptation of the learning rule of CLSL in the context of electrical circuits would lead to the following \res{updating rule for resistances}
 \begin{equation}
 \boxed{\dot{R}_j = \frac{\alpha}{2\eta R_{j}^2} \left[ \left( \Delta V_{j}^{C}\right)^2 - \left( \Delta V_{j}^{F}\right)^2 \right] }
 \label{eq:cont_rul_res}   
 \end{equation}
-where $R_{j}$ is the selected resistance to update, $\Delta V_{j}^{C}$ is the potential difference between the nodes that it connects in the clamped state and $\Delta V_{j}^{F}$ the difference in the free state. In the paper [dillavou] they define
+where $R_{j}$ is the selected resistance to update, $\Delta V_{j}^{C}$ is the potential difference between the nodes that it connects in the clamped state and $\Delta V_{j}^{F}$ the difference in the free state. In the paper \cite{Dillavou} they define
 \[
 \gamma = \frac{\alpha}{2\eta}
 \]
@@ -206,6 +215,20 @@ In the experiment, they have discrete resistors and the rule above gets approxim
 \end{equation}
 which consists in taking the sign of \cref{eq:cont_rul_res} and multipy it by the value $\delta R$.
 
-\subsection{Comparison with standard methods}
+We can also reformulate the theory in terms of conductances $g_j = 1/R_j$, the updating rule of wihch can be derived from the power dissipated
+\[
+\mathcal{P}  = \frac{1}{2} \sum_{j} \frac{\Delta V_j^2}{R_j} = \frac{1}{2} \sum_{j} g_j \Delta V_j^2.
+\]
+In terms of the learning rate $\gamma$, the \cond{updating rule for conductances} read
+\begin{equation}
+    \boxedc{\dot{g}_j = \gamma \left[ \left( \Delta V_{j}^{F}\right)^2 - \left( \Delta V_{j}^{C}\right)^2 \right] }   
+\end{equation}
+
+\section{Simple Start: Voltage Divider}
+
+One of the simplest networks we can consider is a simple votage divider, shown in Fiugre (). It has three nodes, two sources and one ouput, with potential $V_{S1}$, $V_{O}$ and $V_{S2}$. The goal in training this network is to deliver a voltage of $V_{O} = 4V$ when imposing voltages of $V_{S1}=5V$ and $V_{S2}=0V$. At the beginning, the resistances are initiated to a value of $R = 50 k \Omega$. In this first section, we are trying to reproduce the results shown in the paper \cite{Dillavou}, we are thus adopting the same setting and choise of parameters
+
+\newpage
+\printbibliography
 
 \end{document}

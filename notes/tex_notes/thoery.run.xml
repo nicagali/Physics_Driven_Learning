@@ -79,5 +79,8 @@
     <requires type="dynamic">
       <file>thoery.bcf</file>
     </requires>
+    <requires type="editable">
+      <file>biblio.bib</file>
+    </requires>
   </external>
 </requests>

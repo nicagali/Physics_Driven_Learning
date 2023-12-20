@@ -1,0 +1,131 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{Stern}{article}{}
+      \name{author}{4}{}{%
+        {{hash=bbf4e41a3cbbf1255f0c4bce99ec25b4}{%
+           family={Stern},
+           familyi={S\bibinitperiod},
+           given={Menachem},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d98504eb56b3021f45b028d1475b2430}{%
+           family={Hexner},
+           familyi={H\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=80171f7d1e21a0f9facc7c62b3b80b30}{%
+           family={Rocks},
+           familyi={R\bibinitperiod},
+           given={Jason\bibnamedelima W.},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=21c4e5b5d965ab2b0d6d75ae663efefd}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Andrea\bibnamedelima J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society (APS)}%
+      }
+      \strng{namehash}{44888254121cfb863ade2f171b5725d5}
+      \strng{fullhash}{363bd6d6aca8260f15bedf7a14b2a287}
+      \strng{bibnamehash}{44888254121cfb863ade2f171b5725d5}
+      \strng{authorbibnamehash}{44888254121cfb863ade2f171b5725d5}
+      \strng{authornamehash}{44888254121cfb863ade2f171b5725d5}
+      \strng{authorfullhash}{363bd6d6aca8260f15bedf7a14b2a287}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2160-3308}
+      \field{journaltitle}{Physical Review X}
+      \field{month}{5}
+      \field{number}{2}
+      \field{title}{Supervised Learning in Physical Networks: From Machine Learning to Learning Machines}
+      \field{volume}{11}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.1103/physrevx.11.021045
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1103/PhysRevX.11.021045
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1103/PhysRevX.11.021045
+      \endverb
+    \endentry
+    \entry{Dillavou}{article}{}
+      \name{author}{4}{}{%
+        {{hash=3829e346f8ab885f6bc83651590fe910}{%
+           family={Dillavou},
+           familyi={D\bibinitperiod},
+           given={Sam},
+           giveni={S\bibinitperiod}}}%
+        {{hash=bbf4e41a3cbbf1255f0c4bce99ec25b4}{%
+           family={Stern},
+           familyi={S\bibinitperiod},
+           given={Menachem},
+           giveni={M\bibinitperiod}}}%
+        {{hash=21c4e5b5d965ab2b0d6d75ae663efefd}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Andrea\bibnamedelima J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=2e0c7e49611a3e4370ff0ee6cdc737f3}{%
+           family={Durian},
+           familyi={D\bibinitperiod},
+           given={Douglas\bibnamedelima J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society (APS)}%
+      }
+      \strng{namehash}{c6f47f6a1094c6b981b8d54d1bde1240}
+      \strng{fullhash}{5f8ed1c1430b6960b8000c1fbb9b4763}
+      \strng{bibnamehash}{c6f47f6a1094c6b981b8d54d1bde1240}
+      \strng{authorbibnamehash}{c6f47f6a1094c6b981b8d54d1bde1240}
+      \strng{authornamehash}{c6f47f6a1094c6b981b8d54d1bde1240}
+      \strng{authorfullhash}{5f8ed1c1430b6960b8000c1fbb9b4763}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2331-7019}
+      \field{journaltitle}{Physical Review Applied}
+      \field{month}{7}
+      \field{number}{1}
+      \field{title}{Demonstration of Decentralized Physics-Driven Learning}
+      \field{volume}{18}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.1103/physrevapplied.18.014040
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1103/PhysRevApplied.18.014040
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1103/PhysRevApplied.18.014040
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,8 +1,10 @@
 # PATHS
 
 DATA_PATH = '../../data/'
-DATA_PATH_MEMR = '../../data/memristors'
+DATA_PATH = '../data/'
+DATA_PATH_MEMR = '../../data/memristors/'
 PLOT_PATH = '../../plots/'
+PLOT_PATH = '../plots/'
 DATA_PATHG = '../../data/graphs/'
 PLOT_PATHG = '../../plots/graphs/'
 DATA_IONCHAN_PATH = '../../../Ionic_Channels/data/'
@@ -13,9 +15,9 @@ numb_edges = 16
 numb_source_nodes = 3
 numb_target_nodes = 3
 numb_hidden_nodes = numb_nodes - numb_target_nodes - numb_source_nodes
-s
+
 # TRAINING PARAMETERS
-source_voltages = [5, 1, 0]
+source_voltages = [5, 1, 1]
 # desired_output  = [3, 3, 3]
 desired_output = [4]
 
@@ -27,15 +29,19 @@ delta_R = 0.781
 # gamma_r = delta_R
 tol = 1e-16
 
-initial_value_conductance = 1/50
+# initial_value_conductance = (1/50)*10**(-11)
+# initial_value_conductance = 1/50
+initial_value_conductance = 4e-12
 eta_c = 0.5
 alpha_c = 5e-4
-gamma_c = alpha_c/eta_c
+# gamma_c = (alpha_c/eta_c)*10**(-11)
+gamma_c = (alpha_c/eta_c)
+gamma_c = 1e-14
 delta_g = 0.0005
 
 standard_dev = 0.01
 
-iterations = 20
+iterations = 500
 
 # PLOT PREFERENCES
 

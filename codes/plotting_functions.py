@@ -72,8 +72,6 @@ def plot_mse(ax, fig, rule, update, zoom_in, save_plot=False,
 
     ax.grid(ls=':')
     
-
-
 def plot_resistances(ax, G, rule):
 
     numb_edges = G.number_of_edges()
@@ -108,13 +106,13 @@ def plot_resistances(ax, G, rule):
     ax.set_xticklabels([])
     ax.set_xlim(np.min(x), np.max(x))
 
-
 def plot_conductaces(ax, G):
 
     numb_edges = G.number_of_edges()
 
     conductance_data = np.genfromtxt(f"{DATA_PATH}conductances_change.txt", unpack=True)
 
+    print(conductance_data[0])
 
     for edge in range(len(conductance_data)):
 
@@ -138,7 +136,50 @@ def plot_conductaces(ax, G):
     ax.tick_params('y', labelsize=size_ticks)
     # ax.set_xticklabels([])
     ax.set_xlim(np.min(x), np.max(x))
+
+def plot_conductaces_ratio(ax, G):
+
+    conductance_data = np.genfromtxt(f"{DATA_PATH}conductances_change.txt", unpack=True)
+
+    for edge in range(len(conductance_data)):
+
+        cond_values = conductance_data[edge]
+
+        x = [0]
+        x.extend(range(1,len(conductance_data[edge])+1))
+        y = [initial_value_conductance]
+        y.extend(cond_values)
+        
+        if edge==0:
+            ax.plot(x, y, lw = 3, color = 'silver', label=r'$g_1$')
+        else:
+            ax.plot(x, y, lw = 3, color = 'dimgray', label=r'$g_2$')
+
     
+    ax.grid(ls=':')
+
+    ax.set_ylabel(r'$g$', fontsize = axis_fontsize)
+    ax.tick_params('y', labelsize=size_ticks)
+    # ax.set_xticklabels([])
+    ax.set_xlim(np.min(x), np.max(x))   
+
+    ax2 = ax.twinx()
+
+    x = range(0,len(conductance_data[edge])+1)
+
+    # y = [1, np.array(conductance_data[0])/np.array(conductance_data[1])]
+
+    y = np.concatenate(([1], np.array(conductance_data[0])/np.array(conductance_data[1])))
+
+    ax2.plot(x, y, lw = 3, color = 'cadetblue', label=r'$g_1/g_2$')
+
+    ax2.plot(x, [4]*(len(x)), ls = ':', color = 'cadetblue', lw = 2.5)
+
+    ax.legend(fontsize=legend_size)
+    
+    # ax2.legend(fontsize=legend_size)
+
+
 def simple_plot_voltages(ax, rule, update):
 
     x = np.array(range(iterations))
@@ -165,7 +206,6 @@ def simple_plot_voltages(ax, rule, update):
 
     ax.grid(ls=':')
     ax.legend(fontsize = legend_size)
-
 
 def difference_mse(ax):
 

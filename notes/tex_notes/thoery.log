@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.10.23)  1 NOV 2023 17:11
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2023.10.23)  20 DEC 2023 12:18
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/monicaconte/nica/phd/Projects/Dillavou/general_network/notes/thoery.tex
-(/home/monicaconte/nica/phd/Projects/Dillavou/general_network/notes/thoery.tex
+**/home/monicaconte/nica/phd/Projects/Dillavou/general_network/notes/tex_notes/thoery.tex
+(/home/monicaconte/nica/phd/Projects/Dillavou/general_network/notes/tex_notes/thoery.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -528,6 +528,10 @@ Package: appendix 2020/02/08 v1.2c extra appendix facilities
 \c@@pps=\count304
 \c@@ppsavesec=\count305
 \c@@ppsaveapp=\count306
+) (/usr/share/texlive/texmf-dist/tex/latex/cleveref/cleveref.sty
+Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
+Package cleveref Info: always capitalise cross-reference names on input line 7825.
+Package cleveref Info: always capitalise cross-reference names on input line 7852.
 ) (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2022/02/02 v3.17 programmable bibliographies (PK/MW)
  (/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
@@ -779,11 +783,7 @@ Package biblatex Info: ... and expl3
 Package: xparse 2022-01-12 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2022/02/02 v3.17 expl3 case changing code for biblatex
-)) (/usr/share/texlive/texmf-dist/tex/latex/cleveref/cleveref.sty
-Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
-Package cleveref Info: always capitalise cross-reference names on input line 7825.
-Package cleveref Info: always capitalise cross-reference names on input line 7852.
-) (/usr/share/texlive/texmf-dist/tex/latex/imakeidx/imakeidx.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/imakeidx/imakeidx.sty
 Package: imakeidx 2016/10/15 v1.3e Package for typesetting indices in a synchronous mode
  (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
@@ -908,26 +908,26 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
  (./thoery.aux)
 \openout1 = `thoery.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 65.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 65.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 74.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 74.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -945,8 +945,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'thoery.bbl' found.
  (./thoery.bbl)
-Package biblatex Info: Reference section=0 on input line 65.
-Package biblatex Info: Reference segment=0 on input line 65.
+Package biblatex Info: Reference section=0 on input line 74.
+Package biblatex Info: Reference segment=0 on input line 74.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -982,33 +982,33 @@ Package biblatex Info: Reference segment=0 on input line 65.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 68.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 77.
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 68.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 77.
  (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 68.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 77.
  (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 68.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 77.
  (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 68.
+(Font)              <12> on input line 77.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 68.
+(Font)              <8> on input line 77.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 68.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 68.
+(Font)              <6> on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 77.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 68.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 77.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (./thoery.toc
@@ -1021,33 +1021,37 @@ LaTeX Font Info:    External font `lmex10' loaded for size
  [1
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+qpl on input line 87.
+LaTeX Font Info:    Trying to load font information for TS1+qpl on input line 96.
  (/usr/share/texmf/tex/latex/tex-gyre/ts1qpl.fd
 File: ts1qpl.fd 2009/09/25 v1.2 font definition file for TS1/qpl
 ) [2]
-File: figures_tex/neuron.png Graphic file (type bmp)
-<figures_tex/neuron.png>
-File: figures_tex/neural_ntw.pdf Graphic file (type pdf)
-<use figures_tex/neural_ntw.pdf>
+File: ../figures_tex/neuron.png Graphic file (type bmp)
+<../figures_tex/neuron.png>
+File: ../figures_tex/neural_ntw.pdf Graphic file (type pdf)
+<use ../figures_tex/neural_ntw.pdf>
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [3] [4]
-File: figures_tex/general_graph.pdf Graphic file (type pdf)
-<use figures_tex/general_graph.pdf>
- [5] [6] [7] (./thoery.aux)
+File: ../figures_tex/general_graph.pdf Graphic file (type pdf)
+<use ../figures_tex/general_graph.pdf>
+ [5] [6] [7]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 232.
+ (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [8] (./thoery.aux)
 Package logreq Info: Writing requests to 'thoery.run.xml'.
 \openout1 = `thoery.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26460 strings out of 476191
- 532569 string characters out of 5812071
- 1203751 words of memory out of 5000000
- 46760 multiletter control sequences out of 15000+600000
- 537562 words of font info for 75 fonts, out of 8000000 for 9000
+ 26547 strings out of 476191
+ 534330 string characters out of 5812071
+ 1213283 words of memory out of 5000000
+ 46842 multiletter control sequences out of 15000+600000
+ 541172 words of font info for 77 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 84i,14n,80p,1119b,1190s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,14n,80p,1127b,4769s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on thoery.xdv (7 pages, 26844 bytes).
+Output written on thoery.xdv (8 pages, 31212 bytes).

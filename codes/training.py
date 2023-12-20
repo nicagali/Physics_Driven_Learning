@@ -5,6 +5,7 @@ import networkx as nx
 import random
 from parameters import *
 import analysis
+import matplotlib.pyplot as plt
 
 def power_function_res(G):
 
@@ -28,7 +29,22 @@ def power_function_cond(G):
 
     for u, v in G.edges():
 
-        resistance = G[u][v]['resistance']
+        conductance = G[u][v]['conductance']
+        voltage_u = G.nodes[u]['voltage']
+        voltage_v = G.nodes[v]['voltage']
+
+        power += conductance * (voltage_u - voltage_v)**2
+
+    return power
+
+def minimizing_function(x, G):
+
+    G.nodes[1]["voltage"] = x
+
+    power = 0
+
+    for u, v in G.edges():
+
         conductance = G[u][v]['conductance']
         voltage_u = G.nodes[u]['voltage']
         voltage_v = G.nodes[v]['voltage']
@@ -63,6 +79,8 @@ def constraints_dict(fixed_nodes, fixed_voltages):
 
     for fixed_node in fixed_nodes:
 
+        # print(fixed_node, fixed_voltages[fixed_nodes.index(fixed_node)])
+
         constrain = {'type' : 'eq', 'fun' : generate_constraint, 
                      'args' : (fixed_node, fixed_voltages[fixed_nodes.index(fixed_node)],)}
 
@@ -79,17 +97,17 @@ def minimize_graph(G, state, update):
     if state=="free":
         fixed_nodes = [node for node in G.nodes() if G.nodes[node]['type'] == 'source']
         fixed_voltages = [G.nodes[node]['voltage'] for node in fixed_nodes]
-     
+
     initial_guess = np.zeros(len(G.nodes()))
     initial_guess = [fixed_voltages[fixed_nodes.index(node)] if node in fixed_nodes else 0 for node in G.nodes()]
-    
+
     if update == 'resistances':
         result = minimize(objective_function_res, initial_guess, args=(G, ), 
                       constraints=constraints_dict(fixed_nodes, fixed_voltages))
     else:
         result = minimize(objective_function_cond, initial_guess, args=(G, ), 
-                      constraints=constraints_dict(fixed_nodes, fixed_voltages))
-
+                      constraints=constraints_dict(fixed_nodes, fixed_voltages), tol=1e-22)
+    
     return G
 
 def update_clamped(G, update):
@@ -175,7 +193,9 @@ def update_conductances(G_free, G_clamped, rule):
         diff_clamped = np.abs(G_clamped.nodes[u]['voltage'] - G_clamped.nodes[v]['voltage'])
 
         delta_v = diff_clamped-diff_free
+        # print(f"Difference clamped - free edge {edge}", delta_v)
         delta_v_sq = diff_clamped**2 - diff_free**2
+        # print(f"Difference clamped - free edge {edge} squared", delta_v_sq)
 
         if rule == 'discrete':
                 if delta_v>tol:
@@ -186,11 +206,12 @@ def update_conductances(G_free, G_clamped, rule):
 
                     G_out.edges[edge]['conductance'] += delta_g
         else:
-            prefac = gamma_c
 
-            delta_g_cont = prefac * (-1) * (delta_v_sq)
+            delta_g_cont = gamma_c * (-1) * (delta_v_sq)
 
             G_out.edges[edge]['conductance'] += delta_g_cont
+
+            # print("deltag = ", delta_g_cont)
 
     return G_out       #here I update only one graph, the important info is in the edges
 
@@ -218,7 +239,9 @@ def update_conductances_new(G, state):
 
 def train(G, rule, update, noise=False, simple=False):
 
+
     G_free = minimize_graph(G, 'free', update)
+
     G_free = G_free.copy(as_view=False)
 
     G = update_clamped(G, update)

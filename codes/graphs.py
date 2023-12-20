@@ -34,6 +34,7 @@ def simple_graph(save_data=False):
 
     G.nodes[0]['voltage'] = 5
     G.nodes[2]['voltage'] = 0
+    G.nodes[1]['voltage'] = 1
 
     G.add_edge(0,1)
     G.add_edge(1,2)
@@ -50,7 +51,7 @@ def simple_graph(save_data=False):
 
     if save_data:
 
-        nx.write_graphml(G, f"{DATA_PATHG}simple_graph.graphml")
+        nx.write_graphml(G, f"/home/monicaconte/nica/phd/Projects/Dillavou/general_network/data/graphs/simple_graph.graphml")
 
     return G
 
