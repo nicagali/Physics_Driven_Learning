@@ -1,15 +1,49 @@
-[0] Config.pm:307> INFO - This is Biber 2.17
-[0] Config.pm:310> INFO - Logfile is 'thoery.blg'
-[61] biber:340> INFO - === wo dec 20, 2023, 12:18:13
-[69] Biber.pm:418> INFO - Reading 'thoery.bcf'
-[113] Biber.pm:972> INFO - Found 2 citekeys in bib section 0
-[121] Biber.pm:4383> INFO - Processing section 0
-[128] Biber.pm:4574> INFO - Looking for bibtex file 'biblio.bib' for section 0
-[128] bibtex.pm:1713> INFO - LaTeX decoding ...
-[131] bibtex.pm:1518> INFO - Found BibTeX data source 'biblio.bib'
-[162] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[162] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[162] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[162] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
-[166] bbl.pm:654> INFO - Writing 'thoery.bbl' with encoding 'UTF-8'
-[167] bbl.pm:757> INFO - Output to thoery.bbl
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: thoery.aux
+The style file: unsrt.bst
+Database file #1: biblio.bib
+Warning--I didn't find a database entry for "Dillvaou"
+Warning--I didn't find a database entry for ""
+You've used 6 entries,
+            1791 wiz_defined-function locations,
+            487 strings with 4680 characters,
+and the built_in function-call counts, 1186 in all, are:
+= -- 82
+> -- 90
+< -- 0
++ -- 32
+- -- 26
+* -- 95
+:= -- 219
+add.period$ -- 18
+call.type$ -- 6
+change.case$ -- 6
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 46
+empty$ -- 100
+format.name$ -- 26
+if$ -- 246
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 5
+newline$ -- 33
+num.names$ -- 6
+pop$ -- 11
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 24
+stack$ -- 0
+substring$ -- 15
+swap$ -- 6
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 7
+width$ -- 7
+write$ -- 67
+(There were 2 warnings)

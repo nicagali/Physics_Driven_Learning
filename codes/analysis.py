@@ -16,21 +16,6 @@ def ms_error(G):
 
     return error
 
-# def res_change(G, res_change_vec):
-
-#     res_change_value = 0
-
-#     index_vec = 0
-
-#     for edge in G.edges():
-
-#         res_change_value += G.edges[edge]['resistance'] - res_change_vec[index_vec]
-
-#         res_change_vec[index_vec] = G.edges[edge]['resistance']
-
-#         index_vec += 1
-
-#     return res_change_value, res_change_vec
 
 
 

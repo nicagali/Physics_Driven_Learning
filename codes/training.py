@@ -70,6 +70,8 @@ def objective_function_cond(x, G):
     return power_function_cond(G)
 
 def generate_constraint(x, fixed_node, fixed_voltage):
+    
+    fixed_node = int(fixed_node)
 
     return x[fixed_node] - fixed_voltage
 
@@ -163,6 +165,15 @@ def update_resistances(G_free, G_clamped, rule, noise=False):
                 elif delta_v<-tol:
 
                     G_free.edges[edge]['resistance'] -= delta_R
+                    
+                if G_free.edges[edge]['resistance'] < delta_R:
+                    
+                    G_free.edges[edge]['resistance'] = delta_R
+                    
+                if G_free.edges[edge]['resistance'] > 100:
+                    
+                    G_free.edges[edge]['resistance'] = 100
+                                    
             else:
 
                 prefac = gamma_r * (1 / (G_free.edges[edge]['resistance'])**2)
@@ -171,13 +182,14 @@ def update_resistances(G_free, G_clamped, rule, noise=False):
 
                 G_free.edges[edge]['resistance'] += delta_R_cont
 
-            if G_free.edges[edge]['resistance'] < tol:
+                # if G_free.edges[edge]['resistance'] < 0 or G_free.edges[edge]['resistance']>100:
 
-                # G_free.remove_edge(u,v)
+                #     # G_free.remove_edge(u,v)
 
-                # G_free.edges[edge]['resistance'] += (-1)*delta_R
-
-                G_free.edges[edge]['resistance'] = 'removed'
+                #     G_free.edges[edge]['resistance'] -= delta_R_cont
+                    
+                
+                # G_free.edges[edge]['resistance'] = 'removed'
 
     return G_free       #here I update only one graph, the important info is in the edges
 
@@ -210,6 +222,10 @@ def update_conductances(G_free, G_clamped, rule):
             delta_g_cont = gamma_c * (-1) * (delta_v_sq)
 
             G_out.edges[edge]['conductance'] += delta_g_cont
+            
+            # if G_out.edges[edge]['conductance']<tol:
+                
+            #     G_out.edges[edge]['conductance'] -= delta_g_cont
 
             # print("deltag = ", delta_g_cont)
 
@@ -288,14 +304,16 @@ def print_parameters():
           f'gamma_c = {gamma_c},', 
           f'initial conductances={initial_value_conductance}', '\n')
 
-def training_epoch(G, rule, update, mse=False, resistances_change=False, 
+def training_epoch(G, rule, update, eta_specify=0, mse=False, resistances_change=False, 
                    conductances_change=False, voltages_simple=False, 
                    noise=False, show_parameters=False, new_rule=False):
 
     ms_normalization=0
     # open files in data
-    if mse and new_rule==False:
+    if mse and new_rule==False and eta_specify==0:
         mse_file = open(f"{DATA_PATH}mse_{rule}_{update}.txt", "w") 
+    if mse and new_rule==False and eta_specify!=0:
+        mse_file = open(f"{DATA_PATH}mse_{rule}_{update}_{eta_specify}.txt", "w") 
     if mse and new_rule:
         mse_file = open(f"{DATA_PATH}mse_{rule}_{update}_newrule.txt", "w") 
     if resistances_change:

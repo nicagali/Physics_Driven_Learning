@@ -2,6 +2,11 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import numpy as np
 from parameters import *
+from matplotlib.offsetbox import AnchoredText
+# import sys
+# sys.path.append(f'{PATH_TO_DIR_ION}/codes/')
+# from parameters_channels import *
+
 
 def plot_graph(ax, fig, name_graph, save_plot=False):
 
@@ -14,16 +19,21 @@ def plot_graph(ax, fig, name_graph, save_plot=False):
     if save_plot:
         fig.savefig(f"{PLOT_PATHG}{name_graph}.pdf")
 
-def plot_mse(ax, fig, rule, update, zoom_in, save_plot=False, 
-             average=False, new_rule=False, scatter=False):
+def plot_mse(ax, fig, rule, update, zoom_in, label="", save_plot=False, 
+             average=False, new_rule=False, scatter=False, real_time=False):
 
-    x = range(iterations)
+    x = np.linspace(0,iterations, iterations)
+
+    
+    if real_time:
+        
+        x = x * 0.07
+    
     if new_rule==False:
         y = np.loadtxt(f"{DATA_PATH}mse_{rule}_{update}.txt", unpack=True)
     else:
         y = np.loadtxt(f"{DATA_PATH}mse_{rule}_{update}_newrule.txt", unpack=True)
         
-
     x = x[zoom_in:]
     y = y[zoom_in:]
 
@@ -68,27 +78,44 @@ def plot_mse(ax, fig, rule, update, zoom_in, save_plot=False,
 
     ax.legend(fontsize = legend_size)
     ax.set_ylabel(r'$C$', fontsize = axis_fontsize)
-    ax.set_xlabel(r'steps', fontsize = axis_fontsize)
+    if real_time:
+        ax.set_xlabel(r'Time(ms)', fontsize = axis_fontsize)
+    else:
+        ax.set_xlabel(r'Training steps', fontsize = axis_fontsize)
+    
+    
+    # label
+    ax.text(-0.1, 1, label, transform=ax.transAxes, fontsize=size_labels, va='top', ha='right')
 
     ax.grid(ls=':')
     
-def plot_resistances(ax, G, rule):
+def plot_resistances(ax, G, rule, zoom_in=0):
 
     numb_edges = G.number_of_edges()
-    # x = range(iterations)
 
     resistance_data = np.genfromtxt(f"{DATA_PATH}resistances_change_{rule}.txt", unpack=True)
-
-    # print(np.shape(resistance_data))
-
-    # print(len(resistance_data))
 
     for edge in range(numb_edges):
 
         if numb_edges==1:
             y = resistance_data
             x = range(len(resistance_data))
-        else:    
+            ax.plot(x, y, lw = 2)
+            
+        elif numb_edges==2: 
+            
+            res_values = resistance_data[edge]
+            
+            x = [0]
+            x.extend(range(1,len(resistance_data[edge])+1))
+            y = [initial_value_resistances]
+            y.extend(res_values)
+            
+            if edge==0:
+                ax.plot(x, y, lw = 3, color = 'silver', label=r'$R_1$')
+            else:
+                ax.plot(x, y, lw = 3, color = 'dimgray', label=r'$R_2$')  
+        else: 
             res_values = resistance_data[edge]
 
             x = range(len(resistance_data[edge]))
@@ -96,14 +123,17 @@ def plot_resistances(ax, G, rule):
             for i in range(len(resistance_data[edge])):
                 if res_values[i] != 'removed':
                     y.append(res_values[i])
+                    
+            x = x[zoom_in:]
+            y = y[zoom_in:]
 
-        ax.plot(x, y, lw = 2)
+            ax.plot(x, y, lw = 2)
     
     ax.grid(ls=':')
 
-    ax.set_ylabel(r'$R(\Omega)$', fontsize = axis_fontsize)
+    ax.set_ylabel(r'$R(k\Omega)$', fontsize = axis_fontsize)
     ax.tick_params('y', labelsize=size_ticks)
-    ax.set_xticklabels([])
+    # ax.set_xticklabels([])
     ax.set_xlim(np.min(x), np.max(x))
 
 def plot_conductaces(ax, G):
@@ -112,7 +142,7 @@ def plot_conductaces(ax, G):
 
     conductance_data = np.genfromtxt(f"{DATA_PATH}conductances_change.txt", unpack=True)
 
-    print(conductance_data[0])
+    # print(conductance_data[0])
 
     for edge in range(len(conductance_data)):
 
@@ -137,7 +167,7 @@ def plot_conductaces(ax, G):
     # ax.set_xticklabels([])
     ax.set_xlim(np.min(x), np.max(x))
 
-def plot_conductaces_ratio(ax, G):
+def plot_conductaces_ratio(ax, G, label=""):
 
     conductance_data = np.genfromtxt(f"{DATA_PATH}conductances_change.txt", unpack=True)
 
@@ -158,9 +188,9 @@ def plot_conductaces_ratio(ax, G):
     
     ax.grid(ls=':')
 
-    ax.set_ylabel(r'$g$', fontsize = axis_fontsize)
+    ax.set_ylabel(r'$g(pS)$', fontsize = axis_fontsize)
     ax.tick_params('y', labelsize=size_ticks)
-    # ax.set_xticklabels([])
+    ax.set_xticklabels([])
     ax.set_xlim(np.min(x), np.max(x))   
 
     ax2 = ax.twinx()
@@ -174,13 +204,67 @@ def plot_conductaces_ratio(ax, G):
     ax2.plot(x, y, lw = 3, color = 'cadetblue', label=r'$g_1/g_2$')
 
     ax2.plot(x, [4]*(len(x)), ls = ':', color = 'cadetblue', lw = 2.5)
+    
+    ax2.set_ylim(0, 6.5)
 
     ax.legend(fontsize=legend_size)
     
-    # ax2.legend(fontsize=legend_size)
+    ax2.spines['right'].set_color('cadetblue')
+    ax2.tick_params(axis='y', colors='cadetblue', labelsize=size_ticks)
+    ax2.set_ylabel(r'$g_1/g_2$', fontsize = axis_fontsize, color= 'cadetblue')
+    
+    # label
+    ax.text(-0.1, 1, label, transform=ax.transAxes, fontsize=size_labels, va='top', ha='right')
+    
+def plot_resistances_ratio(ax, G, rule, label=""):
 
+    resistance_data = np.genfromtxt(f"{DATA_PATH}resistances_change_{rule}.txt", unpack=True)
 
-def simple_plot_voltages(ax, rule, update):
+    for edge in range(len(resistance_data)):
+
+        res_values = resistance_data[edge]
+
+        x = [0]
+        x.extend(range(1,len(resistance_data[edge])+1))
+        y = [initial_value_resistances]
+        y.extend(res_values)
+        
+        if edge==0:
+            ax.plot(x, y, lw = 3, color = 'silver', label=r'$R_1$')
+        else:
+            ax.plot(x, y, lw = 3, color = 'dimgray', label=r'$R_2$')
+
+    ax.grid(ls=':')
+
+    ax.set_ylabel(r'$R(k\Omega)$', fontsize = axis_fontsize)
+    ax.tick_params('y', labelsize=size_ticks)
+    ax.set_xticklabels([])
+    ax.set_xlim(np.min(x), np.max(x))   
+
+    ax2 = ax.twinx()
+
+    x = range(0,len(resistance_data[edge])+1)
+
+    # y = [1, np.array(conductance_data[0])/np.array(conductance_data[1])]
+
+    y = np.concatenate(([1], np.array(resistance_data[0])/np.array(resistance_data[1])))
+
+    ax2.plot(x, y, lw = 3, color = 'cadetblue', label=r'$g_1/g_2$')
+
+    ax2.plot(x, [1/4]*(len(x)), ls = ':', color = 'cadetblue', lw = 2.5)
+    
+    ax2.set_ylim(0, 1.5)
+    
+    ax2.spines['right'].set_color('cadetblue')
+    ax2.tick_params(axis='y', colors='cadetblue', labelsize=size_ticks)
+    ax2.set_ylabel(r'$R_1/R_2$', fontsize = axis_fontsize, color= 'cadetblue')
+    
+    # label
+    ax.text(-0.1, 1, label, transform=ax.transAxes, fontsize=size_labels, va='top', ha='right')
+    
+    ax.legend(fontsize=legend_size)
+
+def simple_plot_voltages(ax, rule, update, label=""):
 
     x = np.array(range(iterations))
 
@@ -201,11 +285,14 @@ def simple_plot_voltages(ax, rule, update):
     ax.set_xticklabels([])
     # ax.tick_params('x', labelsize=size_ticks)
 
-    ax.set_ylabel(r'$V^{O}(V)$', fontsize = axis_fontsize)
+    ax.set_ylabel(r'$V_{O}(V)$', fontsize = axis_fontsize)
     ax.tick_params('y', labelsize=size_ticks)
 
     ax.grid(ls=':')
     ax.legend(fontsize = legend_size)
+    
+    # label
+    ax.text(-0.1, 1, label, transform=ax.transAxes, fontsize=size_labels, va='top', ha='right')
 
 def difference_mse(ax):
 
@@ -226,6 +313,28 @@ def difference_mse(ax):
     ax.tick_params('x', labelsize=size_ticks)
     ax.set_xlim(np.min(x), np.max(x))
     
+def plot_mse_3etas(ax, eta):
+    
+    x = range(iterations)
+    
+    y = np.loadtxt(f"{DATA_PATH}mse_continuous_resistances_{eta}.txt", unpack=True)
 
+    if eta==0.5:
+        ax.semilogy(x, y, **mse_continuous_res_style_05)
+    
+    if eta==0.2:
+        ax.semilogy(x, y, **mse_continuous_res_style_01)
+        
+    if eta==1:
+        ax.semilogy(x, y, **mse_continuous_res_style_1)
+        
+    ax.tick_params('y', labelsize=size_ticks)
+    ax.tick_params('x', labelsize=size_ticks)
+    ax.set_xlim(np.min(x), np.max(x))
 
+    ax.legend(fontsize = legend_size)
+    ax.set_ylabel(r'$C$', fontsize = axis_fontsize)
+    ax.set_xlabel(r'Training steps', fontsize = axis_fontsize)
+        
+        
 

@@ -1,13 +1,16 @@
 # PATHS
 
-DATA_PATH = '../../data/'
-DATA_PATH = '../data/'
-DATA_PATH_MEMR = '../../data/memristors/'
-PLOT_PATH = '../../plots/'
-PLOT_PATH = '../plots/'
-DATA_PATHG = '../../data/graphs/'
-PLOT_PATHG = '../../plots/graphs/'
-DATA_IONCHAN_PATH = '../../../Ionic_Channels/data/'
+# Here insert the office path when you get back to the office
+
+PATH_TO_DIR = "/Users/monicaconte/PhD/Projects/Physics_Driven_Learning/"
+DATA_PATH = f"{PATH_TO_DIR}data/"
+DATA_PATH_MEMR = f"{PATH_TO_DIR}data/memristors/"
+PLOT_PATH = f"{PATH_TO_DIR}plots/"
+DATA_PATHG = f"{PATH_TO_DIR}data/graphs/"
+PLOT_PATHG = f"{PATH_TO_DIR}/plots/graphs/"
+
+PATH_TO_DIR_ION = "/Users/monicaconte/PhD/Projects/Ionic_Channels/"
+DATA_IONCHAN_PATH = f'{PATH_TO_DIR_ION}/data/'
 
 # GRAPH PREFERENCES
 numb_nodes = 9
@@ -23,25 +26,30 @@ desired_output = [4]
 
 initial_value_resistances = 50
 eta_r = 0.5
-alpha_r = 5e3
-gamma_r = alpha_r/eta_r
+alpha_r = 5000
+gamma_r = alpha_r/(2*eta_r)
 delta_R = 0.781
-# gamma_r = delta_R
+# gamma_r = 500
 tol = 1e-16
 
 # initial_value_conductance = (1/50)*10**(-11)
-# initial_value_conductance = 1/50
-initial_value_conductance = 4e-12
+initial_value_conductance = 1/50
+initial_value_conductance = 4
+# initial_value_conductance = 4e-12
 eta_c = 0.5
-alpha_c = 5e-4
+# eta_c=1e-3
+alpha_c = 0.003
 # gamma_c = (alpha_c/eta_c)*10**(-11)
-gamma_c = (alpha_c/eta_c)
-gamma_c = 1e-14
+gamma_c = (alpha_c/(2*eta_c))
+# gamma_c = 1e-14
+# gamma_c = 0.001
 delta_g = 0.0005
 
 standard_dev = 0.01
 
-iterations = 500
+iterations = 70
+
+# time_interval = 
 
 # PLOT PREFERENCES
 
@@ -49,16 +57,22 @@ iterations = 500
 axis_fontsize = 17
 legend_size = 15
 size_ticks = 13
+size_labels = 17
 
 # colors
 color_dots = ['firebrick','mediumorchid','silver']
 
 # dictionaries
 
-mse_discrete_style = dict(c = 'blueviolet', lw=2, label = 'discrete')
-mse_continuous_res_style = dict(c = 'navy', lw=2, label = rf'continuous $R$, $\gamma_R =$ {gamma_r:.0f}')
+mse_discrete_style = dict(c = 'hotpink', lw=2, label = rf'Discrete rule')
+mse_continuous_res_style = dict(c = 'darkmagenta', lw=2, label = rf'Continuous rule')
+
+mse_continuous_res_style_1 = dict(c = 'tomato', lw=2, label = rf'$\eta = 1$')
+mse_continuous_res_style_05 = dict(c = 'darkmagenta', lw=2, label = rf'$\eta = 0.5$')
+mse_continuous_res_style_01 = dict(c = 'palevioletred', lw=2, label = rf'$\eta = 0.2$')
+
 mse_continuous_res_style_scatter = dict(c = 'navy', marker='d', label = rf'continuous $R$, $\gamma_R =$ {gamma_r:.0f}')
-mse_continuous_con_style = dict(c = 'skyblue', lw=3, label = rf'continuous $g$, $\gamma_g =$ {gamma_c}')
+mse_continuous_con_style = dict(c = 'skyblue', lw=3, label = rf'Continuous rule')
 mse_continuous_con_style_new = dict(c = 'olive', lw=2, label = rf'continuous $g$ new, $\gamma_g =$ {gamma_c}')
 mse_continuous_con_style_scatter = dict(c = 'skyblue', marker="d", s=60, label = rf'continuous $g$, $\gamma_g =$ {gamma_c}')
 mse_continuous_con_style_scater_new = dict(c = 'olive', marker='P', label = rf'continuous $g$ new, $\gamma_g =$ {gamma_c}')

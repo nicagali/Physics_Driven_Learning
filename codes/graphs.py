@@ -51,7 +51,7 @@ def simple_graph(save_data=False):
 
     if save_data:
 
-        nx.write_graphml(G, f"/home/monicaconte/nica/phd/Projects/Dillavou/general_network/data/graphs/simple_graph.graphml")
+        nx.write_graphml(G, f"{DATA_PATHG}simple_graph.graphml")
 
     return G
 
