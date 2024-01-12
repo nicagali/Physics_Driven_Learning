@@ -182,11 +182,11 @@ def update_resistances(G_free, G_clamped, rule, noise=False):
 
                 G_free.edges[edge]['resistance'] += delta_R_cont
 
-                # if G_free.edges[edge]['resistance'] < 0 or G_free.edges[edge]['resistance']>100:
+                if G_free.edges[edge]['resistance'] < 0 or G_free.edges[edge]['resistance']>100:
 
-                #     # G_free.remove_edge(u,v)
+                    # G_free.remove_edge(u,v)
 
-                #     G_free.edges[edge]['resistance'] -= delta_R_cont
+                    G_free.edges[edge]['resistance'] -= delta_R_cont
                     
                 
                 # G_free.edges[edge]['resistance'] = 'removed'

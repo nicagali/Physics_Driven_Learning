@@ -2,7 +2,8 @@
 
 # Here insert the office path when you get back to the office
 
-PATH_TO_DIR = "/Users/monicaconte/PhD/Projects/Physics_Driven_Learning/"
+# PATH_TO_DIR = "/Users/monicaconte/PhD/Projects/Physics_Driven_Learning/"
+PATH_TO_DIR = "/home/monicaconte/nica/phd/Projects/Dillavou/general_network/"
 DATA_PATH = f"{PATH_TO_DIR}data/"
 DATA_PATH_MEMR = f"{PATH_TO_DIR}data/memristors/"
 PLOT_PATH = f"{PATH_TO_DIR}plots/"
@@ -21,8 +22,8 @@ numb_hidden_nodes = numb_nodes - numb_target_nodes - numb_source_nodes
 
 # TRAINING PARAMETERS
 source_voltages = [5, 1, 1]
-# desired_output  = [3, 3, 3]
-desired_output = [4]
+desired_output  = [3, 3, 3]
+# desired_output = [4]
 
 initial_value_resistances = 50
 eta_r = 0.5
@@ -47,7 +48,7 @@ delta_g = 0.0005
 
 standard_dev = 0.01
 
-iterations = 70
+iterations = 500
 
 # time_interval = 
 
