@@ -87,7 +87,7 @@ def plot_mse(ax, fig, rule, update, zoom_in, label="", save_plot=False,
     # label
     ax.text(-0.1, 1, label, transform=ax.transAxes, fontsize=size_labels, va='top', ha='right')
 
-    ax.grid(ls=':')
+    # ax.grid(ls=':')
     
 def plot_resistances(ax, G, rule, zoom_in=0):
 
@@ -129,12 +129,13 @@ def plot_resistances(ax, G, rule, zoom_in=0):
 
             ax.plot(x, y, lw = 2)
     
-    ax.grid(ls=':')
+    # ax.grid(ls=':')
 
     ax.set_ylabel(r'$R(k\Omega)$', fontsize = axis_fontsize)
     ax.tick_params('y', labelsize=size_ticks)
-    # ax.set_xticklabels([])
+    ax.set_xticklabels([])
     ax.set_xlim(np.min(x), np.max(x))
+    ax.legend(fontsize = legend_size)
 
 def plot_conductaces(ax, G):
 
@@ -288,7 +289,7 @@ def simple_plot_voltages(ax, rule, update, label=""):
     ax.set_ylabel(r'$V_{O}(V)$', fontsize = axis_fontsize)
     ax.tick_params('y', labelsize=size_ticks)
 
-    ax.grid(ls=':')
+    # ax.grid(ls=':')
     ax.legend(fontsize = legend_size)
     
     # label

@@ -2,8 +2,8 @@
 
 # Here insert the office path when you get back to the office
 
-# PATH_TO_DIR = "/Users/monicaconte/PhD/Projects/Physics_Driven_Learning/"
-PATH_TO_DIR = "/home/monicaconte/nica/phd/Projects/Dillavou/general_network/"
+PATH_TO_DIR = "/Users/monicaconte/PhD/Projects/Physics_Driven_Learning/"
+# PATH_TO_DIR = "/home/monicaconte/nica/phd/Projects/Dillavou/general_network/"
 DATA_PATH = f"{PATH_TO_DIR}data/"
 DATA_PATH_MEMR = f"{PATH_TO_DIR}data/memristors/"
 PLOT_PATH = f"{PATH_TO_DIR}plots/"
@@ -48,15 +48,15 @@ delta_g = 0.0005
 
 standard_dev = 0.01
 
-iterations = 500
+iterations = 100
 
 # time_interval = 
 
 # PLOT PREFERENCES
 
 # size
-axis_fontsize = 17
-legend_size = 15
+axis_fontsize = 19
+legend_size = 19
 size_ticks = 13
 size_labels = 17
 
@@ -65,8 +65,10 @@ color_dots = ['firebrick','mediumorchid','silver']
 
 # dictionaries
 
-mse_discrete_style = dict(c = 'hotpink', lw=2, label = rf'Discrete rule')
-mse_continuous_res_style = dict(c = 'darkmagenta', lw=2, label = rf'Continuous rule')
+# mse_discrete_style = dict(c = 'hotpink', lw=2, label = rf'Discrete rule')
+mse_discrete_style = dict(c = 'goldenrod', lw=3, label = rf'Discrete rule')
+# mse_continuous_res_style = dict(c = 'darkmagenta', lw=2, label = rf'Continuous rule')
+mse_continuous_res_style = dict(c = 'red', lw=3, label = rf'Continuous rule')
 
 mse_continuous_res_style_1 = dict(c = 'tomato', lw=2, label = rf'$\eta = 1$')
 mse_continuous_res_style_05 = dict(c = 'darkmagenta', lw=2, label = rf'$\eta = 0.5$')
@@ -79,7 +81,8 @@ mse_continuous_con_style_scatter = dict(c = 'skyblue', marker="d", s=60, label =
 mse_continuous_con_style_scater_new = dict(c = 'olive', marker='P', label = rf'continuous $g$ new, $\gamma_g =$ {gamma_c}')
 
 marker_style_volt = []
-marker_style = dict(ls='-', lw=2, c='blue', label='Free')
+# marker_style = dict(ls='-', lw=2, c='blue', label='Free')
+marker_style = dict(ls='-', lw=4, c='goldenrod', label='Free')
 marker_style_volt.append(marker_style)
 marker_style = dict(ls='-', lw=4, c='black', label='Clamped')
 marker_style_volt.append(marker_style)
